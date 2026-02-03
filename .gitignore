@@ -1,3 +1,7 @@
 /pgadmin
 /data
 /webdata
+__pycache__
+* .pyc
+* .pyo
+* .pyd

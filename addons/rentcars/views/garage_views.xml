@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_form_garage" model="ir.ui.view">
+        <field name="name">Garage form</field>
+        <field name="model">rentcars.garage</field>
+        <field name="arch" type="xml">
+            <form string="garage">
+                <header>
+
+                </header>
+                <sheet>
+                    <h3>Première partie</h3>
+                    <group name="group_line_1">
+                        <group name="group_column_left">
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="places_max"/>
+                        </group>
+                        <group name="group_column_left">
+                            <field name="address_street"/>
+                            <field name="address_zipcode"/>'
+                            <field name="address_city"/>'
+                            <field name="user_id"/>
+
+                        </group>
+                    </group>
+                    <group>
+                        <field name="vehicle_ids">
+                            <list editable="bottom">
+                                <field name="model"/>
+                                <field name="immatriculation"/>
+                                <field name="date_purchased"/>
+                                <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>
+
+

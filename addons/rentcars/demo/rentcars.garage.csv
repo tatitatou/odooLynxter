@@ -1,0 +1,2 @@
+"id","name","active","address_street","address_zipcode","address_city","places_max","vehicle_ids:id"
+rentcars_garage_501,Montauryssss,True,"10 allée du parc Montaury",64000,Anglet,5,"rentcars_vehicle_101,rentcars_vehicle_102"

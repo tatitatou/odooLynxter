@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<odoo noupdate="1">
+    <data>
+        <record id="xml_vehicle_101" model="rentcars.vehicle">
+            <field name="model">Renault zoé</field>
+            <field name="active">1</field>
+            <field name="immatriculation">CC741CC</field>
+            <field name="date_purchased" eval="datetime.now()"></field>
+            <field name="thumbnail" type="base64" file="rentcars/static/photos/car-1880381_1280.jpg"></field>
+        </record>
+        <record id="xml_vehicle_102" model="rentcars.vehicle">
+            <field name="model">Renault mégane</field>
+            <field name="active">1</field>
+            <field name="immatriculation">DD741DD</field>
+            <field name="date_purchased" eval="(datetime.now() - timedelta(days=5))"></field>
+            <field name="thumbnail" type="base64" file="rentcars/static/photos/car-1880381_1280.jpg"></field>
+        </record>
+        <record id="xml_garage_101" model="rentcars.garage">
+            <field name="name">Pau</field>
+            <field name="active">1</field>
+            <field name="address_street">14, rue du pont</field>
+            <field name="address_zipcode">64000</field>
+            <field name="address_city">Pau</field>
+            <field name="places_max">50</field>
+            <field name="vehicle_ids" eval="[(4, ref('xml_vehicle_101')),(4, ref('xml_vehicle_102'))]"/>
+        </record>
+        <record id="xml_vehicle_103" model="rentcars.vehicle">
+            <field name="model">Fiat Punto</field>
+            <field name="active">1</field>
+            <field name="immatriculation">GG001GG</field>
+            <field name="date_purchased" eval="datetime.now()"></field>
+            <field name="thumbnail" type="base64" file="rentcars/static/photos/car-1880381_1280.jpg"></field>
+            <field name="garage_id" eval="ref('xml_garage_101')"></field>
+        </record>
+        <record id="xml_vehicle_104" model="rentcars.vehicle">
+            <field name="model">Fiat Punto2</field>
+            <field name="active">1</field>
+            <field name="immatriculation">FF001FF</field>
+            <field name="date_purchased" eval="datetime.now()"></field>
+            <field name="thumbnail" type="base64" file="rentcars/static/photos/car-1880381_1280.jpg"></field>
+            <field name="garage_id" ref="xml_garage_101"></field>
+        </record>
+        <record id="xml_option_101" model="rentcars.option">
+            <field name="name">Vitre électrique</field>
+            <field name="active">1</field>
+            <field name="category">comfort</field>
+            <field name="description">Les vitres montent et descendent</field>
+        </record>
+        <record id="xml_option_102" model="rentcars.option">
+            <field name="name">Peinture métalisée</field>
+            <field name="active">1</field>
+            <field name="category">aestheticism</field>
+            <field name="description">La voiture brille</field>
+            <field name="vehicle_ids" eval="[(4, ref('xml_vehicle_101')),(4, ref('xml_vehicle_102'))]"/>
+        </record>
+        <record id="xml_option_103" model="rentcars.option">
+            <field name="name">Abs</field>
+            <field name="active">1</field>
+            <field name="category">security</field>
+            <field name="description">De meilleurs freins</field>
+            <field name="vehicle_ids" eval="[(4, ref('xml_vehicle_102'))]"/>
+        </record>
+        <record id="xml_option_103" model="rentcars.option">
+            <field name="name">Abs</field>
+            <field name="active">1</field>
+            <field name="category">security</field>
+            <field name="description">De meilleurs freins</field>
+            <field name="vehicle_ids" eval="[(4, ref('xml_vehicle_101'))]"/>
+        </record>
+
+    </data>
+</odoo>
+

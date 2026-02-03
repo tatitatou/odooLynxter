@@ -1,0 +1,50 @@
+<odoo>
+    <record id="view_list_booking" model="ir.ui.view">
+        <field name="name">Liste des réservations</field>
+        <field name="model">rentcars.booking</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="id"/>
+                <field name="date_start"/>
+                <field name="date_delay"/>
+                <field name="user_name"/>
+                <field name="vehicle_model"/>
+
+            </list>
+        </field>
+    </record>
+    <record id="view_calendar_booking" model="ir.ui.view">
+        <field name="name">ReservationCalendar</field>
+        <field name="model">rentcars.booking</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_start" date_delay="date_delay" color="user_id" mode="week" event_open_popup="True"
+                      quick_create="0">
+                    <field name="display_name"/>
+                <field name="vehicle_id" filters="True" invisible="0"/>
+                <field name="user_id" filters="True" avatar_field="1"/>
+                
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_form_booking" model="ir.ui.view">
+        <field name="name">Reservation</field>
+        <field name="model">rentcars.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_start"/>
+                    <field name="date_delay"/>
+                    <field name="vehicle_id"/>
+                    <field name="user_id"/>
+                </group>
+                 <!-- mail mixin fields -->
+<!--                    <div class="oe_chatter">-->
+<!--                     <field name="message_follower_ids" widget="mail_followers"/>-->
+<!--                      <field name="activity_ids" widget="mail_activity"/>-->
+<!--                        <field name="message_ids" widget="mail_thread"/>-->
+<!--                    </div>-->
+            </form>
+        </field>
+    </record>
+</odoo>

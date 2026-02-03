@@ -1,0 +1,61 @@
+<odoo>
+    <record id="view_reparation_kanban" model="ir.ui.view">
+        <field name="model">rentcars.vehicle</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="repairing_status" >
+                <progressbar field="kanban_state" colors='{"work": "info", "blocked": "danger"}'/>
+
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                                <!-- Top-right drop down menu ... -->
+                                <a class="dropdown-toggle btn"
+                                   role="button" data-toggle="dropdown"
+                                   title="Dropdown menu" href="#">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <!-- Edit menu option -->
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit"
+                                           class="dropdown-item">Edit
+                                        </a>
+                                    </t>
+                                    <!-- Delete menu option -->
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete"
+                                           class="dropdown-item">Delete
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_title">
+                                    <!-- Title area ... -->
+                                    <field name="model"/>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <field name="thumbnail" widget="image"/>
+                                    <field name="immatriculation"/>
+                                     <p><field name="kanban_state" /></p>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="repairing_priority" widget="priority"/>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <p><field name="date_purchased"/></p>
+
+                                    </div>
+                                </div> <!-- o_kanban_record_bottom -->
+                                <div class="oe_clear"/>
+                            </div> <!-- oe_kanban_content -->
+                        </div> <!-- oe_kanban_global_click -->
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>

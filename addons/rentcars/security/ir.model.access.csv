@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vehicle_manager,VehicleManager,model_rentcars_vehicle,rentcars_group_manager,1,1,1,1
+access_vehicle_user,VehicleUser,model_rentcars_vehicle,rentcars_group_user,1,0,0,0
+access_garage_manager,GarageManager,model_rentcars_garage,rentcars_group_manager,1,1,1,1
+access_garage_user,GarageUser,model_rentcars_garage,rentcars_group_user,1,0,0,0
+access_option_manager,OptionManager,model_rentcars_option,rentcars_group_manager,1,1,1,1
+access_option_user,OptionUser,model_rentcars_option,rentcars_group_user,1,0,0,0
+access_category_manager,CategoryManager,model_rentcars_category,rentcars_group_manager,1,1,1,1
+access_category_user,CategoryUser,model_rentcars_category,rentcars_group_user,1,0,0,0
+access_booking_manager,BookingManager,model_rentcars_booking,rentcars_group_manager,1,1,1,1
+access_booking_user,BookingUser,model_rentcars_booking,rentcars_group_user,1,0,0,0

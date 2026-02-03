@@ -1,0 +1,54 @@
+<odoo>
+    <!-- Menu de l'application rentacar -->
+    <menuitem id="menu_rentcars" name="RentCars !" />
+    <!-- Action pour ouvrir la liste des véhicules -->
+    <record id="action_rentcars_vehicle" model="ir.actions.act_window">
+        <field name="name">RentCars Vehicles</field>
+        <field name="res_model">rentcars.vehicle</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Action pour ouvrir la liste des garages -->
+    <record id="action_rentcars_garage" model="ir.actions.act_window">
+        <field name="name">RentCars Garage</field>
+        <field name="res_model">rentcars.garage</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+     <!-- Action pour ouvrir la liste des options -->
+    <record id="action_rentcars_option" model="ir.actions.act_window">
+        <field name="name">RentCars Options</field>
+        <field name="res_model">rentcars.option</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+     <!-- Action pour ouvrir la liste des catégorie -->
+    <record id="action_rentcars_category" model="ir.actions.act_window">
+        <field name="name">RentCars Category</field>
+        <field name="res_model">rentcars.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Action pour ouvrir le calendrier des réservations -->
+    <record id="action_rentcars_booking2" model="ir.actions.act_window">
+        <field name="name">RentCars Booking</field>
+        <field name="res_model">rentcars.booking</field>
+        <field name="view_mode">list,form,calendar</field>
+        <!-- <field name="domain">[('vehicle_id.state','=','usable')]</field> -->
+    </record>
+
+        <!-- Action pour ouvrir la vue kanban pour les véhicule en cours de réparation -->
+    <record id="action_rentcars_reparation" model="ir.actions.act_window">
+        <field name="name">RentCars Reparation</field>
+        <field name="res_model">rentcars.vehicle</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state','=','repaired')]</field>
+    </record>
+    <!-- Lien de menu qui utilise l'action qui affiche la liste des véhicules -->
+    <menuitem id="menu_rentcars_vehicle" name="Vehicles" parent="menu_rentcars" action="action_rentcars_vehicle" sequence="0"  />
+    <menuitem id="menu_rentcars_garage" name="Garages" parent="menu_rentcars" action="action_rentcars_garage" sequence="10" />
+    <menuitem id="menu_rentcars_option" name="Options" parent="menu_rentcars" action="action_rentcars_option" sequence="20" />
+    <menuitem id="menu_rentcars_category" name="Categorys" parent="menu_rentcars" action="action_rentcars_category" sequence="30" />
+    <menuitem id="menu_rentcars_booking" name="Bookings" parent="menu_rentcars" action="action_rentcars_booking2" sequence="40" />
+    <menuitem id="menu_rentcars_reparation" name="Reparation" parent="menu_rentcars" action="action_rentcars_reparation" sequence="50" />
+</odoo>

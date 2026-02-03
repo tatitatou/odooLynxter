@@ -1,0 +1,87 @@
+<odoo>
+    <record id="view_form_vehicle" model="ir.ui.view">
+        <field name="name">Vehicle form</field>
+        <field name="model">rentcars.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="vehicle">
+                <header>
+
+                    <button name="button_check_immatriculation" type="object" icon="fa-question"
+                            string="Check immatriculation" />
+
+                </header>
+                <sheet>
+                    <h3>Première partie</h3>
+                    <group name="group_line_1">
+                        <group name="group_column_left">
+                            <field name="model" />
+                            <field name="active"/>
+                            <field name="age_vehicle"/>
+                        </group>
+                        <group name="group_column_left">
+                            <field name="date_purchased" groups="rentcars.rentcars_group_manager"/>
+                            <field name="immatriculation" invisible="['|', ('state','=','repaired'),('state','=','usable')]"/>
+                            <field name="state" />
+                            <field name="repairing_status" invisible="[('state','=','repaired')]"/>
+                            <field name="kanban_state" invisible="[('state','=','repaired')]"/>
+                            <field name="state" widget="statusbar" statusbar_visible="broken,repaired,usable"/>'
+
+
+                            <field name="option_ids" widget="many2many_checkboxes" readonly="['|',('age_vehicle', '>=', '3'),('state', '!=', 'usable')]" />
+                            <field name="category_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                    <h3>Deuxième partie</h3>
+                    <group name="group_line_2">
+                        <group name="group_column_left">
+                            <field name="garage_id"/>
+                            <field name="garage_city"/>
+                        </group>
+                        <group name="group_column_right">
+                            <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="page1" string="Onglet 1">
+                            <field name="date_purchased"/>
+                        </page>
+                        <page name="page2" string="Onglet 2">
+                            <group><field name="immatriculation"/></group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="view_list_vehicle" model="ir.ui.view">
+        <field name="name">Vehicle list</field>
+        <field name="model">rentcars.vehicle</field>
+        <field name="arch" type="xml">
+            <list  create="false" default_order="state, date_purchased desc">
+                <field name="model"/>
+                <field name="immatriculation"/>
+                <field name="state" />
+                <field name="date_purchased"/>
+                <field name="thumbnail" widget="image" options='{"size": [150, 140]}'/>
+                <field name="garage_city"/>
+<!--                <field name="age_vehicle" avg="Mon étiquette" />-->
+            </list>
+        </field>
+    </record>
+    <record id="view_search_vehicle" model="ir.ui.view">
+        <field name="name">Vehicle Filter</field>
+        <field name="model">rentcars.vehicle</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="immatriculation"/>
+                <field name="model"/>
+                <filter name="filter_active" string="Inactive" domain="[('active','=',False)]"/>
+                <filter name="filter_active" string="Active" domain="[('active','=',True)]"/>
+                <!--                <filter string="filter_this_year" domain="[('date_purchased','>', (context_today() + relativedelta(months=-12, weekday=0)).strftime('%Y-%m-%d'))]"/>-->
+            </search>
+        </field>
+    </record>
+</odoo>
+
+
